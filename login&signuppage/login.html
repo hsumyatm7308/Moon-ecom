@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <!--Fontawesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Tailwind Css cdn js-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- custom css  -->
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<style>
+    #alert {
+        display: none;
+    }
+</style>
+
+<body class="overflow-hidden">
+
+    <div class="w-full h-full grid">
+
+        <div class="w-full grid justify-center items-center mb-4">
+
+            <h1 class="text-3xl mt-4 justify-self-center">Welcome</h1>
+
+
+            <div class="w-[350px] h-[300px] border border-stone-300 rounded-lg mt-4">
+
+                <h1 class="text-2xl mt-5 ml-7">Log In</h1>
+
+                <form action="" method="post" class="text-center mt-5" enctype="multipart/form-data">
+                    <div class="">
+                        <label for="email" class="text-sm mr-[107px]">Email or mobile phone number</label>
+                        <input type="email" name="email" id="email"
+                            class="w-[85%] h-8 border border-stone-400 rounded-sm focus:outline-none focus:ring-1"
+                            autofocus>
+
+                    </div>
+                    <p id="alert" class="text-[12px] text-red-600 mr-[56px] mt-1">! Enter your email or mobile phone
+                        number</p>
+
+                    <button type="button" id="submitbtn"
+                        class="w-[85%] h-8  bg-slate-400 mt-3 text-black-400 text-sm rounded-md hover:bg-slate-300">Continue</button>
+
+                    <p class="w-[85%] text-[12px] ml-7 mt-4 mb-4">By continuing, you agree to <a href=""
+                            class="text-indigo-400">Our Conditions of Use</a> and <a href=""
+                            class="text-indigo-400">Privacy Notice</a>.</p>
+                    <a href="" class="text-[13px] text-indigo-400  mr-[55%] hover:underline">Forget password</a>
+                </form>
+
+            </div>
+
+
+            <div class="flex justify-center items-center mt-2">
+                <div class="w-24 h-[1px] bg-slate-300"></div>
+                <div class="text-sm m-4">New to our site?</div>
+                <div class="w-24 h-[1px] bg-slate-300"></div>
+
+            </div>
+
+
+            <div class="text-center -mt-5">
+                <button type="button"
+                    class="w-[85%] h-8 mt-3 text-black-400 text-sm rounded-md border border-stone-300 hover:bg-stone-100 ">
+                    <a href="./signup.html">Create New Account</a>
+                </button>
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="w-full h-[300px] bg-slate-300 flex justify-center items-start mt-5">
+
+            <div class="text-center">
+                <p class="text-gray-500 leading-6 text-sm mt-5">All rights reserved. © Boundless-Commerce,</p>
+                <span class="text-gray-500 text-sm"> Made by Data Land Students</span>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!-- custom js  -->
+    <script>
+        const getemail = document.getElementById('email');
+        const submitbtn = document.getElementById('submitbtn');
+        const alertmsg = document.getElementById('alert');
+
+        let val = true;
+
+        submitbtn.addEventListener('click', function () {
+            if (getemail.value) {
+                console.log(getemail.value);
+                getemail.style.border = "1px solid rgb(148 163 184)";
+                alertmsg.style.display = "none"
+
+
+                val = false;
+            } else {
+                getemail.style.border = "1px solid red";
+                alertmsg.style.display = "block"
+                val = true;
+            }
+
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <!--Fontawesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Tailwind Css cdn js-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- custom css  -->
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<style>
+    #emailalert,
+    #namealert,
+    #passwordalert,#repasswordalert {
+        display: none;
+    }
+</style>
+
+<body class="">
+
+    <div class="w-full h-full grid">
+
+        <div class="w-full grid justify-center items-center mb-4">
+
+            <h1 class="text-3xl mt-4 justify-self-center">Welcome</h1>
+
+
+            <div class="w-[350px] h-auto border border-stone-300 rounded-lg mt-4 pb-2">
+
+                <h1 class="text-2xl mt-5 ml-6">Create Your Account</h1>
+
+                <form action="" method="post" class="text-center mt-5" enctype="multipart/form-data">
+                    <div class="mb-2">
+                        <label for="name" class="text-sm mr-[230px]">Your name</label>
+                        <input type="text" name="name" id="name"
+                            class="w-[85%] h-8 border border-stone-400 rounded-sm focus:outline-none focus:ring-1"
+                            autofocus>
+                        <p id="namealert" class="text-[12px] text-red-600  text-start mt-1 ml-7 alertmsg alert">! Enter
+                            your name</p>
+                    </div>
+
+                    <div class="mb-2">
+
+                        <label for="email" class="text-sm mr-[107px]">Email or mobile phone number</label>
+                        <input type="email" name="email" id="email"
+                            class="w-[85%] h-8 border border-stone-400 rounded-sm focus:outline-none focus:ring-1">
+
+                        <p id="emailalert" class="text-[12px] text-red-600 text-start mt-1 ml-7 alertmsg">! Enter your
+                            email or
+                            mobile
+                            phone number
+                        </p>
+                    </div>
+
+
+
+
+                    <div class="mb-2">
+
+                        <label for="password" class="text-sm mr-[235px]">Password</label>
+                        <input type="password" name="password" id="password"
+                            class="w-[85%] h-8 border border-stone-400 rounded-sm focus:outline-none focus:ring-1"
+                            min="6">
+                        <p id="passwordalert" class="text-[12px] text-red-600 text-start mt-1 ml-7 alertmsg">! Minimum 6
+                            numbers
+                            required</p>
+                    </div>
+
+
+                    <div>
+
+                        <label for="repassword" class="text-sm mr-[175px]">Re-enter password</label>
+                        <input type="password" name="repassword" id="repassword"
+                            class="w-[85%] h-8 border border-stone-400 rounded-sm focus:outline-none focus:ring-1"
+                            min="6">
+                        <p id="repasswordalert" class="text-[12px] text-red-600 text-start mt-1 ml-7">! Password must match</p>
+                    </div>
+
+
+
+                    <button type="button" id="submitbtn"
+                        class="w-[85%] h-8  bg-slate-400 mt-3 text-black-400 text-sm rounded-md hover:bg-slate-300">Continue</button>
+
+                    <p class="w-[85%] text-[12px] ml-7 mt-4 mb-4 pb-2">By continuing, you agree to <a href=""
+                            class="text-indigo-400">Our Conditions of Use</a> and <a href=""
+                            class="text-indigo-400">Privacy Notice</a>.
+                    </p>
+
+                    <div class="w-[85%] h-[1px] bg-slate-300 ml-7"></div>
+
+                    <div class="w-[85%] h-8 flex justify-start items-center pt-3">
+                        <span class="text-[13px] ml-8">Already have an account?</span>
+                        <a href="./login.html" class="text-[13px] text-indigo-400 ml-2 hover:underline">Login</a>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="w-full h-[160px] bg-slate-300 flex justify-center items-start mt-5">
+
+            <div class="text-center">
+                <p class="text-gray-500 leading-6 text-sm mt-5">All rights reserved. © Boundless-Commerce,</p>
+                <span class="text-gray-500 text-sm"> Made by Data Land Students</span>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <!-- custom js -->
+    <script>
+        const getemail = document.getElementById('email');
+        const getname = document.getElementById('name');
+        const getpassword = document.getElementById('password');
+        const getrepassword = document.getElementById('repassword');
+        const submitbtn = document.getElementById('submitbtn');
+        const emailalert = document.getElementById('emailalert');
+        const namealert = document.getElementById('namealert');
+        const passwordalert = document.getElementById('passwordalert');
+        const repasswordalert = document.getElementById('repasswordalert');
+
+
+        var getcurrinput = document.getElementsByTagName('input');
+
+        let val = true;
+
+        submitbtn.addEventListener('click', function () {
+
+            for (var x = 0; x < getcurrinput.length; x++) {
+                if (getcurrinput[x].value) {
+
+                    getcurrinput[x].style.border = "1px solid rgb(148 163 184)";
+
+
+
+
+                    val = false;
+                } else {
+                    getcurrinput[x].style.border = "1px solid red";
+
+                    emailalert.style.display = "block";
+                    if (getemail.value) {
+                        emailalert.style.display = "none";
+                    }
+
+                    namealert.style.display = "block";
+                    if (getname.value) {
+                        namealert.style.display = "none";
+                    }
+
+                    passwordalert.style.display = "block";
+                    if (getpassword.value) {
+                        passwordalert.style.display = "none";
+                    }
+
+                    if (getpassword.value.length < 6) {
+                        getpassword.style.border = "1px solid red";
+                        passwordalert.style.display = "block";
+
+                        submitbtn.setAttribute('type', 'button')
+
+                    } else if (getpassword.value.length >= 6) {
+                        submitbtn.setAttribute('type', 'submit')
+                        getpassword.style.border = "1px solid rgb(148 163 184)";
+
+                    }
+
+
+                    if(getpassword.value !== getrepassword.value){
+                       repasswordalert.style.display = "block"
+                    }else{
+                       repasswordalert.style.display = "none"
+                    }
+
+
+                    submitbtn.setAttribute('type', 'button')
+
+
+
+
+                }
+
+
+
+
+
+            }
+
+
+
+
+        });
+
+    </script>
+
+    <!-- custom js  -->
+
+</body>
+
+</html>
