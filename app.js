@@ -205,6 +205,33 @@ const buybtn = document.getElementById('buybtn');
 const shopmodal = document.getElementById('shop-modal');
 const shopcartbtn = document.querySelector('.shopcartbtn');
 
+const backtoshop = document.getElementById('backtoshop');
+
+
+
+
+
+shopcartbtn.addEventListener('click', function () {
+    shopmodal.style.display = "block"
+})
+
+backtoshop.addEventListener('click', function () {
+    shopmodal.style.display = "none"
+})
+
+
+// cart modal 
+function openmodal() {
+    modal.style.display = "block";
+    document.body.classList.add('modal-open');
+}
+
+function closemodal() {
+    modal.style.display = "none";
+    document.body.classList.remove('modal-open');
+}
+
+
 
 
 
@@ -225,63 +252,40 @@ function ready() {
 
 
     addtocartfun();
-
-
-
-
-
-
 }
 
 
 
 
+var cartshopbox;
 
+var itemremove = true;
 
 
 function removecartitems(event) {
     var buttonclick = event.target;
     console.log(buttonclick);
 
-    buttonclick.parentElement.parentElement.parentElement.remove();
-    // updatetotal();
-    var cartitems = document.querySelectorAll('.shopcart-items')[0];
-    var cartitemnames = cartitems.querySelectorAll('.cart-product-title');
+    var cartItem = buttonclick.parentElement.parentElement.parentElement;
+    var itemName = cartItem.querySelector(".cart-product-title").innerText;
 
-    for (var cartitemname of cartitemnames) {
-        cartitemname.remove();
-    }
+
+    cartItem.remove();
+
+    updatesubtotal();
+
+
+
+    backtoshopimg();
+
+
+
+
+
+
 
 }
 
-
-
-
-
-
-
-shopcartbtn.addEventListener('click', function () {
-    shopmodal.style.display = "block"
-})
-
-
-
-// cart modal 
-function openmodal() {
-    modal.style.display = "block";
-    document.body.classList.add('modal-open');
-}
-
-function closemodal() {
-    modal.style.display = "none";
-    document.body.classList.remove('modal-open');
-}
-
-closecartmodal.addEventListener('click', () => {
-    closemodal();
-    // window.location.href += "#continueScript";
-    // location.reload();
-})
 
 
 
@@ -399,6 +403,7 @@ const iitems = [
 
 
 
+var buybtnclicked = true;
 
 
 
@@ -413,9 +418,6 @@ function addtocartfun() {
             addtocartbtn[index].addEventListener('click', function () {
 
                 openmodal();
-
-
-
 
 
                 addcartdata(index, curnum);
@@ -439,11 +441,19 @@ function addtocartfun() {
 
 
 
+
+
+
             });
         })(x);
     }
 
 }
+
+
+
+
+
 
 
 function addcartdata(index, curnum) {
@@ -483,7 +493,7 @@ function addcartdata(index, curnum) {
 const isnamearr = ['iphone 7', 'iphone 7 plus', 'iphone 6', 'iphone 5/5s'];
 const curridx = 0;
 
-
+let ichoose = true;
 
 
 
@@ -492,7 +502,6 @@ function instockfun(index, curnum) {
 
 
 
-    let ichoose = true;
 
 
     // for isphone 
@@ -527,27 +536,33 @@ function instockfun(index, curnum) {
                 const itemstitle = document.getElementsByClassName('itemstitle');
                 const itemsimg = document.getElementsByClassName('itemsimg');
                 const itemsprice = document.getElementsByClassName('itemsprice');
-                itemstitle[0].innerText = itemsdata.inames;
-                itemsimg[0].src = itemsdata.iimg;
-                itemsprice[0].innerText = itemsdata.iprice;
 
-
-
-
-
-                var itemtit = itemstitle[0].innerText;
-                var itemimg = itemsimg[0].src;
-                var itemprice = itemsprice[0].innerText;
-
-                var total = itemprice * curnum;
 
 
                 // console.log(ichoose)
 
+
+
+
                 // buy part
+
                 buybtn.addEventListener('click', function () {
 
                     // console.log(ichoose)
+
+                    itemstitle[0].innerText = itemsdata.inames;
+                    itemsimg[0].src = itemsdata.iimg;
+                    itemsprice[0].innerText = itemsdata.iprice;
+
+
+
+
+
+                    var itemtit = itemstitle[0].innerText;
+                    var itemimg = itemsimg[0].src;
+                    var itemprice = itemsprice[0].innerText;
+
+                    var total = itemprice * curnum;
 
 
                     choosefilterarea.style.background = "transparent";
@@ -556,14 +571,28 @@ function instockfun(index, curnum) {
                     // shopmodal.style.display = "block";
                     closemodal();
 
+
+
                     addproducttocart(itemtit, itemimg, itemprice, total, curnum, index, isname);
 
+
+
+
+
+
+
                 })
+
+
+
+
 
             })
 
         })(i);
     }
+
+
 
 
 
@@ -580,13 +609,12 @@ function instockfun(index, curnum) {
     })
 
 
-
     //  start quantity 
     increasebtn.addEventListener('click', function () {
         ++curnum;
         quantity.innerHTML = `<span id="quantity">${curnum}</span>`;
 
-        return curnum;
+
     });
 
     decreasebtn.addEventListener('click', function () {
@@ -597,17 +625,8 @@ function instockfun(index, curnum) {
         }
         quantity.innerHTML = `<span id="quantity">${curnum}</span>`;
 
-        return curnum;
+
     });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -622,11 +641,47 @@ function instockfun(index, curnum) {
 
 
 
+
+closecartmodal.addEventListener('click', () => {
+    var cartitems = document.querySelectorAll('.shopcart-items')[0];
+    var cartitemnames = cartitems.currentTarget;
+
+    // removefirst();
+    closemodal();
+});
+
+
+
+function backtoshopimg() {
+    var cartitemcontainer = document.getElementById('shopcart-items');
+    var gobackshop = document.querySelector('.gobackshop');
+    var shoppingcartheader = document.querySelector('.shoppingcartheader')
+    console.log(cartitemcontainer.children)
+
+    if (cartitemcontainer.children.length === 0) {
+        const backtoshopcontainer = document.querySelector(".backtoshopcontainer");
+        backtoshopcontainer.classList.remove('hidden')
+        gobackshop.classList.add('hidden')
+        shoppingcartheader.classList.add('hidden')
+
+
+    } else if (cartitemcontainer.children.length > 0) {
+        const backtoshopcontainer = document.querySelector(".backtoshopcontainer");
+        backtoshopcontainer.classList.add('hidden')
+        gobackshop.classList.remove('hidden')
+        shoppingcartheader.classList.remove('hidden')
+
+
+    }
+}
+
+
+
+
 function addproducttocart(itemtit, itemimg, itemprice, total, curnum, index, isname) {
 
 
-
-    var cartshopbox = document.createElement('div');
+    cartshopbox = document.createElement('div');
 
     cartshopbox.classList.add('shopcartboxes');
     var cartitems = document.querySelectorAll('.shopcart-items')[0];
@@ -637,18 +692,15 @@ function addproducttocart(itemtit, itemimg, itemprice, total, curnum, index, isn
     for (var i = 0; i < cartitemname.length; i++) {
 
         if (cartitemname[i].innerText === itemtit) {
-            // alert("you have already add this items  to cart");
-            console.log(cartitemname[i])
 
-            // cartshopbox[i].remove();
-            // Or, if you prefer to use a separate variable:
-            var elementToRemove = cartitemname[i];
-            elementToRemove.parentNode.parentNode.removeChild(elementToRemove);
+            cartshopbox.remove();
 
             return;
 
 
         }
+
+
 
     }
 
@@ -711,7 +763,6 @@ class="flex justify-start items-center lg:w-[65%] md:h[100px]  md:w-[80%] md:h-[
     cartshopbox.innerHTML = itemsbox;
     cartitems.appendChild(cartshopbox);
     cartshopbox.getElementsByClassName('item-remove')[0].addEventListener('click', removecartitems);
-    // cartshopbox.getElementsByClassName('incbtn')[0].addEventListener('click', cartqtychange(curnum));
     cartshopbox.getElementsByClassName('incbtn')[0].addEventListener('click', function () {
         cartqtychangeinc(event, total);
 
@@ -723,7 +774,19 @@ class="flex justify-start items-center lg:w-[65%] md:h[100px]  md:w-[80%] md:h-[
     });
 
 
+    updatesubtotal(total);
+
+    backtoshopimg();
+
+
+
+
+
+
 }
+
+
+
 
 
 
@@ -732,11 +795,9 @@ function cartqtychangeinc(event, total) {
 
 
 
-    // Find the relevant quantity element based on the clicked "incbtn"
     var targetQtyElement = event.currentTarget.parentElement.querySelector('.qty');
     console.log(targetQtyElement);
 
-    // Update the quantity value
     let currentQty = parseInt(targetQtyElement.textContent);
     currentQty++;
     targetQtyElement.textContent = currentQty;
@@ -745,7 +806,6 @@ function cartqtychangeinc(event, total) {
     var targetTotalElement = event.currentTarget.parentElement.parentElement.nextElementSibling.querySelector('.totalqty');
     console.log(targetTotalElement);
 
-    // Update the total quantity value
     var updatedTotal = (total * currentQty).toFixed(2, 0) + "$";
     targetTotalElement.textContent = updatedTotal;
 
@@ -753,32 +813,6 @@ function cartqtychangeinc(event, total) {
 
 
 
-
-
-    // const incbtns = document.querySelectorAll(".incbtn");
-    // const decbtns = document.querySelectorAll('.decbtn');
-    // const totalqty = document.querySelectorAll('.totalqty')
-
-
-
-
-
-
-
-    // decbtns.forEach((decbtn,index) => {
-    //     decbtn.addEventListener("click", function () {
-    //         let currentQty = parseInt(shopqtys[index].textContent);
-    //         if (currentQty > 1) {
-    //             currentQty--;
-    //         } else {
-    //             currentQty = 1;
-    //         }
-    //         shopqtys[index].textContent = currentQty;
-    //         totalqty[index].textContent = (currentQty * total).toFixed(2, 0) + '$';
-
-
-    //     });
-    // });
 
 }
 
@@ -788,10 +822,6 @@ function cartqtychangedec(event, curnum) {
 
 
 
-    const incbtns = document.querySelectorAll(".incbtn");
-    const shopqtys = document.querySelectorAll('.qty');
-
-    const totalqty = document.querySelectorAll('.totalqty')
 
 
 
@@ -813,37 +843,14 @@ function cartqtychangedec(event, curnum) {
 
 
 
+    var targetTotalElement = event.currentTarget.parentElement.parentElement.nextElementSibling.querySelector('.totalqty');
+    console.log(targetTotalElement);
+
+    var updatedTotal = (total * currentQty).toFixed(2, 0) + "$";
+    targetTotalElement.textContent = updatedTotal;
 
 
 
-
-
-
-
-    // const incbtns = document.querySelectorAll(".incbtn");
-    // const decbtns = document.querySelectorAll('.decbtn');
-    // const totalqty = document.querySelectorAll('.totalqty')
-
-
-
-
-
-
-
-    // decbtns.forEach((decbtn,index) => {
-    //     decbtn.addEventListener("click", function () {
-    //         let currentQty = parseInt(shopqtys[index].textContent);
-    //         if (currentQty > 1) {
-    //             currentQty--;
-    //         } else {
-    //             currentQty = 1;
-    //         }
-    //         shopqtys[index].textContent = currentQty;
-    //         totalqty[index].textContent = (currentQty * total).toFixed(2, 0) + '$';
-
-
-    //     });
-    // });
 
 }
 
@@ -853,49 +860,27 @@ function cartqtychangedec(event, curnum) {
 
 
 
+// update total 
+function updatesubtotal(total) {
+    const shopcartitem = document.getElementsByClassName('shopcart-items')[0];
+    const shopcartboxes = shopcartitem.getElementsByClassName('shopcartboxes');
+    var total = 0;
 
+    for (var i = 0; i < shopcartboxes.length; i++) {
+        var shopcartbox = shopcartboxes[i];
+        var priceelement = shopcartbox.getElementsByClassName('itemsprice')[0];
+        var qtyelement = shopcartbox.getElementsByClassName('qty')[0];
+        var price = parseFloat(priceelement.innerText.replace("$", ""))
+        var qty = qtyelement.innerHTML;
 
+        total = total + price * qty;
+        total = Math.round(total * 100) / 100;
 
+        document.getElementsByClassName('subtotal')[0].innerText = total + "$";
 
-
-
-
-
-// End Cart Modal Area
-
-// start shop
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        console.log(total)
+    }
+}
 
 
 
@@ -906,20 +891,41 @@ backshop.addEventListener('click', function () {
     shopmodal.style.display = "none"
 });
 
-// End Cart Modal Area
-
-// start shop
 
 
 
 
 
+// start delivery Method 
+  
+const deliinputs = document.getElementsByTagName('input');
+const delimthone = document.querySelector('.delimthone');
+const delimthtwo = document.querySelector('.delimthtwo');
+const delimththree = document.querySelector('.delimththree');
 
+function methodone(){
+    console.log('hi')
+    delimthone.classList.remove('hidden');
+    delimthtwo.classList.add('hidden');
+    delimththree.classList.add('hidden');
+}
 
+function methodtwo(){
+    delimthtwo.classList.remove('hidden');
+    delimthone.classList.add('hidden');
+    delimththree.classList.add('hidden');
+}
 
+function methodthree(){
+    delimththree.classList.remove('hidden');
+    delimthone.classList.add('hidden');
+    delimthtwo.classList.add('hidden');
+}
 
+// end delivery method 
 
-// End shop
+// End Modal Area
+
 
 
 //End Javascript Area 

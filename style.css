@@ -324,6 +324,9 @@ body.modal-open{
 /* End Modal Section  */
 
 #shop-modal{
-    display: none;
+    /* display: none; */
 }
 
+input.delimethod1[type="radio"]:focus{
+  background: red;
+}
