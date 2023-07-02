@@ -444,6 +444,7 @@ function addtocartfun() {
 
 
 
+
             });
         })(x);
     }
@@ -491,7 +492,7 @@ function addcartdata(index, curnum) {
 
 
 const isnamearr = ['iphone 7', 'iphone 7 plus', 'iphone 6', 'iphone 5/5s'];
-const curridx = 0;
+
 
 let ichoose = true;
 
@@ -677,7 +678,6 @@ function backtoshopimg() {
 
 
 
-
 function addproducttocart(itemtit, itemimg, itemprice, total, curnum, index, isname) {
 
 
@@ -706,7 +706,7 @@ function addproducttocart(itemtit, itemimg, itemprice, total, curnum, index, isn
 
 
     var itemsbox = `  <div
-class="flex justify-start items-center lg:w-[65%] md:h[100px]  md:w-[80%] md:h-[100px] sm:w-[70%] sm:h-[300px] mb-4 shopcartboxes">
+class="w-[90%] h-24 flex justify-start items-center mb-4 shopcartboxes">
 <div class="w-[30%] h-full bg-stone-100 flex justify-start items-center">
     <img src="${itemimg}" class="ml-3" alt="case1" width="60px">
     <div class="ml-3">
@@ -760,11 +760,15 @@ class="flex justify-start items-center lg:w-[65%] md:h[100px]  md:w-[80%] md:h-[
 </div> `
 
 
+
+
+
     cartshopbox.innerHTML = itemsbox;
     cartitems.appendChild(cartshopbox);
     cartshopbox.getElementsByClassName('item-remove')[0].addEventListener('click', removecartitems);
     cartshopbox.getElementsByClassName('incbtn')[0].addEventListener('click', function () {
         cartqtychangeinc(event, total);
+
 
 
     });
@@ -774,8 +778,9 @@ class="flex justify-start items-center lg:w-[65%] md:h[100px]  md:w-[80%] md:h-[
     });
 
 
-    updatesubtotal(total);
+ 
 
+    updatetotal()
     backtoshopimg();
 
 
@@ -799,15 +804,19 @@ function cartqtychangeinc(event, total) {
     console.log(targetQtyElement);
 
     let currentQty = parseInt(targetQtyElement.textContent);
-    currentQty++;
+    ++currentQty;
     targetQtyElement.textContent = currentQty;
 
+    let tot = total * currentQty
+
+    updatetotal(tot);
 
     var targetTotalElement = event.currentTarget.parentElement.parentElement.nextElementSibling.querySelector('.totalqty');
     console.log(targetTotalElement);
 
     var updatedTotal = (total * currentQty).toFixed(2, 0) + "$";
     targetTotalElement.textContent = updatedTotal;
+
 
 
 
@@ -850,10 +859,44 @@ function cartqtychangedec(event, curnum) {
     targetTotalElement.textContent = updatedTotal;
 
 
+    updatetotal();
 
 
 }
 
+
+
+
+
+
+
+
+
+
+
+function updatetotal() {
+  
+    
+    const shopcartitem = document.getElementsByClassName('shopcart-items')[0];
+    const shopcartboxes = shopcartitem.getElementsByClassName('shopcartboxes');
+    var untotal = 0;
+
+    for (var i = 0; i < shopcartboxes.length; i++) {
+        var shopcartbox = shopcartboxes[i];
+        var totalElement = shopcartbox.getElementsByClassName('totalqty')[0];
+        var total = parseFloat(totalElement.innerText.replace("$", ""));
+        untotal = (untotal +  total);
+
+        var subtotal = untotal / 2;
+    }
+
+    console.log("Sum of all totals: " + subtotal.toFixed(2) + "$");
+    document.getElementsByClassName('subtotal')[0].innerText = subtotal.toFixed(2) + "$";
+
+  
+
+    console.log()
+}
 
 
 
@@ -861,26 +904,27 @@ function cartqtychangedec(event, curnum) {
 
 
 // update total 
-function updatesubtotal(total) {
-    const shopcartitem = document.getElementsByClassName('shopcart-items')[0];
-    const shopcartboxes = shopcartitem.getElementsByClassName('shopcartboxes');
-    var total = 0;
+// function updatetotal(currentQty) {
+//     const shopcartitem = document.getElementsByClassName('shopcart-items')[0];
+//     const shopcartboxes = shopcartitem.getElementsByClassName('shopcartboxes');
+//     var total = 0;
 
-    for (var i = 0; i < shopcartboxes.length; i++) {
-        var shopcartbox = shopcartboxes[i];
-        var priceelement = shopcartbox.getElementsByClassName('itemsprice')[0];
-        var qtyelement = shopcartbox.getElementsByClassName('qty')[0];
-        var price = parseFloat(priceelement.innerText.replace("$", ""))
-        var qty = qtyelement.innerHTML;
+//     for (var i = 0; i < shopcartboxes.length; i++) {
+//         var shopcartbox = shopcartboxes[i];
+//         var priceelement = shopcartbox.getElementsByClassName('itemsprice')[0];
+//         var qtyelement = shopcartbox.getElementsByClassName('qty')[0];
+//         var price = parseFloat(priceelement.innerText.replace("$", ""))
+//         var qty = qtyelement.innerHTML;
 
-        total = total + price * qty;
-        total = Math.round(total * 100) / 100;
+//         total = total + price * qty;
+//         total = Math.round(total * 100) / 100;
 
-        document.getElementsByClassName('subtotal')[0].innerText = total + "$";
+//         document.getElementsByClassName('subtotal')[0].innerText = total + "$";
 
-        console.log(total)
-    }
-}
+//         console.log(shopcartbox)
+//     }
+// }
+
 
 
 
@@ -897,32 +941,130 @@ backshop.addEventListener('click', function () {
 
 
 // start delivery Method 
-  
-const deliinputs = document.getElementsByTagName('input');
+
+const deliinput = document.getElementsByTagName('input');
 const delimthone = document.querySelector('.delimthone');
 const delimthtwo = document.querySelector('.delimthtwo');
 const delimththree = document.querySelector('.delimththree');
+const delimethod = document.querySelectorAll('.delimethod');
 
-function methodone(){
-    console.log('hi')
-    delimthone.classList.remove('hidden');
-    delimthtwo.classList.add('hidden');
-    delimththree.classList.add('hidden');
+
+
+
+const deliverybtn = document.querySelectorAll('.deliverybtn');
+
+
+const billingadd = document.querySelector(".billingaddresscontainer");
+
+
+
+const getlabel = document.getElementsByTagName('label');
+
+for (var i = 0; i < getlabel.length; i++) {
+    console.log(getlabel[i]);
+
+    (function (index) {
+        getlabel[index].addEventListener('click', function (e) {
+            console.log(e.target.value);
+
+            const clickedElement = getlabel[index];
+            const clickedSibling = clickedElement.nextElementSibling;
+
+            for (var j = 0; j < getlabel.length; j++) {
+                if (j === index) {
+                    clickedSibling.classList.remove('hidden');
+                } else {
+                    const sibling = getlabel[j].nextElementSibling;
+                    if (sibling) {
+                        sibling.classList.add('hidden');
+                    }
+                }
+            }
+
+
+            billingadd.classList.remove('hidden')
+        });
+    })(i);
 }
 
-function methodtwo(){
-    delimthtwo.classList.remove('hidden');
-    delimthone.classList.add('hidden');
-    delimththree.classList.add('hidden');
+
+
+
+
+
+
+
+var getpages = document.getElementsByClassName('page');
+var ctntoship1 = document.getElementById('ctntoship1');
+
+
+var objkeys = [
+    'email',
+    'firstname',
+    'lastname',
+    'phone',
+    'address',
+];
+var datas = [];
+let curidx = 0;
+
+
+
+function showpage(num) {
+
+    getpages[num].classList.remove("hidden");
+
 }
 
-function methodthree(){
-    delimththree.classList.remove('hidden');
-    delimthone.classList.add('hidden');
-    delimthtwo.classList.add('hidden');
+function gonow(num) {
+
+    if (num === 1 && !formvalid()) return false;
+
+    getpages[curidx].classList.add("hidden");
+    curidx = curidx + num;
+
+    showpage(curidx);
 }
 
-// end delivery method 
+function* genfun() {
+    var index = 0;
+
+    while (index < objkeys.length) {
+        yield index++;
+    }
+}
+
+let gen = genfun();
+console.log(gen.next().value)
+
+function formvalid() {
+    var valid = true;
+
+    var getcurrinput = getpages[curidx].querySelectorAll("input");
+    console.log(getcurrinput);
+
+    for (var x = 0; x < getcurrinput.length; x++) {
+        // console.log(getcurrinput[x].value);
+        if (getcurrinput[x].value === '') {
+
+            valid = false;
+        } else {
+            const keys = objkeys[gen.next().value];
+            const values = getcurrinput[x].value;
+            datas.push({ [keys]: values });
+        }
+
+    }
+
+
+
+    return valid;
+
+}
+
+
+
+// end delivery method
 
 // End Modal Area
 
