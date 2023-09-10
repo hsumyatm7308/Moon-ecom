@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commercial</title>
+    <!--Fontawesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- Tailwind Css cdn js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!--Custom Css-->
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+
+
+    <!-- Start Shop Modal  -->
+    <section>
+        <div id="shop-modal"
+            class="grid grid-cols-10 h-full bg-[#fdfdfc]   p-4   md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+
+
+            <!-- <div id="continshop"
+                class="lg:col-span-3 md:col-span-2 flex justify-start items-center text-blue-500 ml-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                </svg>
+                <span class="ml-3">Continue Shopping</span>
+            </div> -->
+
+            <!-- <div class="flex justify-between items-center mr-10 ">
+                <h2 class="text-3xl ml-10 mt-5 hidden shopcarttitle">Your Shopping Cart</h2>
+                <div class="ptcbtnmd mt-5 hidden">
+                    <button
+                        class="text-lg font-semibold rounded bg-slate-500 border border-gray-300 px-2 py-1 hover:text-slate-400">
+                        Proceed to check </button>
+
+                </div>
+
+            </div> -->
+
+            <div class="col-span-7 shocartside">
+
+                <div class="px-20">
+                    <h1 class="text-2xl mt-8">Your Shopping Cart</h1>
+                </div>
+
+
+                <div class="w-full grid  md:grid-cols-1 sm:grid-cols-1 w-full flex px-20 mt-20">
+
+
+                    <div class="w-full grid lg:grid-cols-7  md:grid-cols-7 shopcartboxscr">
+
+
+                        <div
+                            class="lg:col-span-2 md:col-span-2 h-full bg-stone-100 flex justify-start items-center shopcartboxscr-items">
+                            <img src="./assets/img/case.png" class="ml-3" alt="case1" width="60px">
+                            <div class="ml-3">
+                                <h1><a href="" class="text-stone-500 lg:text-lg md:text-md cart-product-title">Fuck
+                                        Case</a>
+                                </h1>
+                                <p class="text-gray-500 text-sm isvars">Fuck Case</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center itemsprice shopcartboxscr-items">
+                            <span class="font-semibold ml-3 classheader">Price : </span>
+                            <span class="font-medium lg:text-lg md:text-md">3000 $</span>
+                        </div>
+
+                        <div
+                            class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center qtycontainer shopcartboxscr-items">
+                            <span class="font-semibold ml-3 classheader">Qty : </span>
+
+                            <div class="flex justify-center items-center rounded-md lg:w-32 h-8 md:w-20">
+                                <div id="decreasebtn"
+                                    class="w-10 h-full rounded-tl-md rounded-bl-md border border-gray-500 flex justify-center items-center decbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+
+                                </div>
+                                <div
+                                    class="border border-gray-300 flex justify-center items-center lg:w-12 h-full md:w-10">
+                                    <span class="font-medium qty">2</span>
+                                </div>
+                                <div id="incbtn"
+                                    class="w-10 h-full rounded-tr-md rounded-br-md border border-gray-500 flex justify-center items-center incbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center shopcartboxscr-items">
+                            <span class="font-semibold ml-3 classheader">Total : </span>
+                            <span class="font-medium lg:text-lg md:text-md totalqty">100
+                                $</span>
+                        </div>
+
+
+
+
+
+                        <div
+                            class="lg:col-span-1 md:col-span-1 h-full flex justify-center items-center item-remove shopcartboxscr-items">
+                            <button type="button"
+                                class="text-gray-500 border border-slate-400 rounded-sm hover:bg-slate-300 py-1 px-3">Remove</button>
+                        </div>
+                    </div>
+
+
+
+                    <!-- <div class="col-span-2 lg:mt-10 md:mt-10 ">
+
+                        <div class="w-full shopitemsctn">
+                            header 
+                            <div
+                                class="w-[99%] grid lg:grid-cols-7 lg:justify-start lg:items-start lg:visible md:grid-cols-7 md:justify-start  md:items-start md:visible hidden  shoppingcartheader ">
+
+
+
+                                <div class="lg:col-span-2 md:col-span-2"> </div>
+                                <div class="lg:col-span-1 md:col-span-1 flex justify-center items-center">
+                                    <span class="font-semibold lg:text-lg md:text-md">Price</span>
+                                </div>
+                                <div class="lg:col-span-1 md:col-span-1 flex justify-center items-center">
+                                    <span class="font-semibold lg:text-lg md:text-md">Qty</span>
+                                </div>
+                                <div class="lg:col-span-1 md:col-span-1 flex justify-center items-center">
+                                    <span class="font-semibold lg:text-lg md:text-md">Total</span>
+                                </div>
+                                <div class="lg:col-span-1 md:col-span-1 flex justify-center items-center"></div>
+
+                            </div> -->
+
+
+                    <!-- items  -->
+                    <!-- <div id="shopcart-items"
+                                class=" gird lg:grid-cols-7 md:grid-cols-1 sm:grid-cols-7 shopcart-items mt-5"> -->
+
+                    <!-- <div class="w-[99%]  lg:bg-transparent md:bg-transparent  mb-4  shopcartboxes">
+
+
+
+                                    <div class="grid lg:grid-cols-7  md:grid-cols-7 shopcartboxscr">
+
+                                        <div
+                                            class=" lg:col-span-2 md:col-span-2 h-full bg-stone-100 flex justify-start items-center shopcartboxscr-items ">
+                                            <img src="./assets/img/case1.png" class="ml-3" alt="case1" width="60px">
+                                            <div class="ml-3">
+                                                <h1><a href=""
+                                                        class="text-stone-500 lg:text-lg md:text-md cart-product-title">Case
+                                                        Notebook</a>
+                                                </h1>
+                                                <p class="text-gray-500 text-sm isphname"></p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center shopcartboxscr-items ">
+                                            <span class="font-semibold ml-3 classheader">Price : </span>
+                                            <span class="font-medium lg:text-lg md:text-md">7.00$</span>
+                                        </div>
+
+                                        <div
+                                            class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center qtycontainer shopcartboxscr-items ">
+
+                                            <span class="font-semibold ml-3 classheader">Qty : </span>
+
+                                            <div
+                                                class="flex justify-center items-center rounded-md lg:w-32 h-8 md:w-20">
+                                                <div id="decreasebtn"
+                                                    class="w-10 h-full rounded-tl-md rounded-bl-md border border-gray-500 flex justify-center items-center decbtn">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-6 h-6 text-gray-600">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M19.5 12h-15" />
+                                                    </svg>
+
+                                                </div>
+
+                                                <div
+                                                    class=" flex justify-center items-center border border-gray-300 lg:w-12 h-full md:w-10">
+                                                    <span class="font-medium qty">2</span>
+                                                </div>
+
+                                                <div id="incbtn"
+                                                    class="w-10 h-full rounded-tr-md rounded-br-md border border-gray-500 flex justify-center items-center incbtn">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-6 h-6 text-gray-600">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                                    </svg>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div
+                                            class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center shopcartboxscr-items ">
+                                            <span class="font-semibold ml-3 classheader">Total : </span>
+
+                                            <span class="font-medium lg:text-lg md:text-md totalqty">7.00$</span>
+                                        </div>
+
+
+
+
+                                        <div
+                                            class="lg:col-span-1 md:col-span-1 h-full flex justify-center items-center items-remove shopcartboxscr-items  ">
+                                            <button type="button"
+                                                class="text-gray-500 border border-slate-400 rounded-sm hover:bg-slate-300 py-1 px-3">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>  -->
+
+
+
+
+
+
+
+
+                    <!-- </div> -->
+
+                    <!-- footer  -->
+
+
+
+                    <!-- </div> -->
+
+
+
+
+
+                    <div class="gbshop hidden">
+                        <div class="w-[99%]  grid lg:grid-cols-7 md:grid-cols-7 mt-10 flex   gobackshop">
+
+
+                            <div class="lg:col-span-3 md:col-span-2 flex justify-start items-center text-blue-500 ">
+
+                            </div>
+
+                            <div class="lg:col-span-1 lg:hidden  md:col-span-1 md:block">
+
+                            </div>
+                            <div class="lg:col-span-1 md:col-span-1 flex justify-center items-center subspan">
+                                <span>Subtotal : </span>
+                            </div>
+
+                            <div class="lg:col-span-1 md:col-span-1  flex justify-center items-center ml-3 subtotal">
+                                <span class="">0$</span>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+            <!-- nothing shoppin cart -->
+            <!-- <div class="w-full h-full flex justify-center items-center flex-col  backtoshopcontainer">
+                    <img src="./assets/emptycartimg/emptycartimg.png" alt="">
+                    <h1 class="text-gray-500 text-lg">Your shopping cart is nothing</h1>
+
+                    <div id="backtoshop" class="mt-3">
+                        <button type="button"
+                            class="text-gray-500 bg-green-400 rounded p-3 hover:opacity-80 focus:ring-1 ">Back to
+                            shop</button>
+                    </div>
+                </div> -->
+
+
+
+
+            <!-- proceed to check  -->
+            <!-- <div class="w-3/6 h-[110vh] bg-stone-100 -mt-20  proceedtocheck "> -->
+            <div class="protockctn col-span-3">
+                <div class="grid col-span-1 ptcctn ">
+
+
+                    <div class="  bg-stone-100   proceedtocheck ptcscreen">
+
+
+                        <div class="flex justify-between">
+                            <h1 class="text-2xl mt-24 ml-10">Proceed to check</h1>
+
+                            <div class="flex justify-center items-center mt-24 mr-[80px] " onclick="gonow(-1)">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
+                                </svg>
+
+                            </div>
+                        </div>
+
+                        <div id="backptc"
+                            class="lg:col-span-3 md:col-span-2 flex justify-start items-center text-blue-500 ml-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 mr-3">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                            </svg>
+
+                            <!-- <span class="ml-3">Continue Shopping</span> -->
+                        </div>
+
+
+                        <hr class="mt-10 bg-gray-200">
+
+
+
+                        <div class="page ">
+
+
+
+
+                            <span class="flex justify-end mt-10 mr-[70px]">
+
+                                Do you have any account?
+                                <span class="flex justify-start ml-3 text-blue-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                                    </svg>
+                                    <a href="">Login</a>
+                                </span>
+
+                            </span>
+
+
+                            <div class=" w-full flex justify-center items-center connectinfomation">
+
+                                <form action="" method="post" class="w-full grid mt-20">
+
+                                    <label for="proceedemail" class="place-self-start ml-10 mb-3">Email</label>
+                                    <input type="email"
+                                        class="w-[80%] border-b border-gray-500 bg-transparent place-self-start ml-10 focus:outline-none proceedemail"
+                                        required>
+                                </form>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                        <div class="page hidden">
+                            <h1 class="text-xl mt-10 ml-10">Delivery method</h1>
+
+                            <div class="ml-10">
+                                <ul>
+                                    <li class="mt-5">
+                                        <label for="delimethod1" class="flex">
+                                            <input type="radio" name="delimethod" id="delimethod1" value="mth1"
+                                                class=" mr-3">
+                                            <span>Self-pickup from the store</span>
+                                            <span class="text-gray-400 ml-2">Free</span>
+                                        </label>
+                                        <span class="grid mt-5 mb-5 hidden delimethod">
+                                            <span>1 infinite loop,</span>
+                                            <span>Cupertino, CA 95014</span>
+                                            <span>9:00am — 6:00pm</span>
+                                        </span>
+                                    </li>
+                                    <li class="mt-5">
+                                        <label for="delimethod2" class="flex">
+                                            <input type="radio" name="delimethod" id="delimethod2" class=" mr-3"
+                                                value="mth2">
+                                            <span>US Shipping</span>
+                                            <span class="text-gray-400 ml-2">$4.90</span>
+                                        </label>
+                                        <span class="grid mt-5 mb-5 hidden delimethod">
+                                            <span>Fast shipping in 2 days. Promise!</span>
+                                        </span>
+                                    </li>
+                                    <li class="mt-5">
+                                        <label for="delimethod3" class="flex">
+                                            <input type="radio" name="delimethod" id="delimethod3" class=" mr-3"
+                                                value="mth3">
+                                            <span>Worldwide shipping</span>
+                                            <span class="text-gray-400 ml-2">$9.90</span>
+                                        </label>
+                                        <span class="grid mt-5 mb-5 hidden delimethod">
+                                            <span>Your order will be fulfilled and sent to USPS in 1 day.</span>
+                                        </span>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+
+
+                            <!-- billing address  -->
+                            <div class="w-full h-82 bg-stone-200 py-3 mt-5   ml-2 hidden billingaddresscontainer px-10">
+
+                                <div class="w-full h-auto">
+                                    <h1 class="text-xl ml-3 mt-5">Billing address</h1>
+                                </div>
+
+                                <div class="w-full h-auto">
+
+                                    <form action="" method="post" class="mt-10 ml-3">
+                                        <input type="text" name="firstname" id="firstname"
+                                            class="w-[45%] bg-transparent border border-b-stone-400 mr-8 mb-5  hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control"
+                                            placeholder="First name" autocomplete="off">
+                                        <input type="text" name="lastname" id="lastname"
+                                            class="w-[45%] bg-transparent border border-b-stone-400 hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control"
+                                            placeholder="Last name" autocomplete="off">
+
+
+                                        <input type="text" name="company" id="company"
+                                            class="w-[97%] bg-transparent border border-b-stone-400 mb-5 hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control"
+                                            placeholder="Company">
+
+                                        <input type="text" name="address" id="address"
+                                            class="w-[97%] bg-transparent border border-b-stone-400 mb-5  hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control"
+                                            placeholder="Address">
+
+                                        <input type="number" name="zipcode" id="zipcode"
+                                            class="w-[45%] bg-transparent border border-b-stone-400 mr-8 mb-5  hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control"
+                                            placeholder="ZIP code">
+                                        <input type="text" name="city" id="city"
+                                            class="w-[45%] bg-transparent border border-b-stone-400 hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control"
+                                            placeholder="City">
+
+                                        <input type="text" name="state" id="state"
+                                            class="w-[45%] bg-transparent border border-b-stone-400 mr-8 mb-5  hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control"
+                                            placeholder="State">
+
+                                        <select name="country" id="country"
+                                            class="w-[45%] bg-transparent border border-b-stone-400  mb-5  hover:border-b-black hover:border-b-2 focus:outline-none focus:border focus:border-b-blue-300 focus:border-b-2 focus:placeholder:text-blue-400 focus:placeholder:text-sm  form-control">
+                                            <option class="text-gray-500" selected>Select country</option>
+                                            <option value="0">Afghanistan</option>
+                                            <option value="1">Albania</option>
+                                            <option value="2">Algeria</option>
+                                            <option value="3">Andorra</option>
+                                            <option value="4">Angola</option>
+                                            <option value="5">Antigua and Barbuda</option>
+                                            <option value="6">Argentina</option>
+                                            <option value="7">Armenia</option>
+                                            <option value="8">Australia</option>
+                                            <option value="9">Austria</option>
+                                            <option value="10">Azerbaijan</option>
+                                            <option value="11">The Bahamas</option>
+                                            <option value="12">Bahrain</option>
+                                            <option value="13">Bangladesh</option>
+                                            <option value="13">Belize</option>
+                                            <option value="13">Benin</option>
+                                            <option value="13">Bhutan</option>
+                                            <option value="13">Bolivia</option>
+                                            <option value="13">Bosnia and Herzegovina</option>
+                                            <option value="13">Botswana</option>
+                                            <option value="13">Brazil</option>
+                                            <option value="13">Brunei</option>
+
+                                        </select>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="page hidden">
+                            <h1 class="text-xl mt-10 ml-10">Payment method</h1>
+
+                            <label for="cashondeli">
+                                <input type="radio" name="cashondeli" id="cashondeli" class="ml-10 mt-10">
+                                <span>Cash on delivery </span>
+                            </label>
+
+                        </div>
+
+                        <div class="flex">
+                            <button type="button" id="ctntoship1"
+                                class="flex text-gray-800 border bg-blue-300 px-5 py-3 rounded  m-auto mt-10 hover:opacity-80 continuetoshippingbtn"
+                                onclick="gonow(1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                </svg>
+                                continue to shipping
+                            </button>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        </div>
+
+    </section>
+
+    <!-- End Modal  -->
+
+
+    <script>
+
+
+
+        // start delivery Method 
+
+        const deliinput = document.getElementsByTagName('input');
+        const delimthone = document.querySelector('.delimthone');
+        const delimthtwo = document.querySelector('.delimthtwo');
+        const delimththree = document.querySelector('.delimththree');
+        const delimethod = document.querySelectorAll('.delimethod');
+
+
+
+
+        const deliverybtn = document.querySelectorAll('.deliverybtn');
+
+
+        const billingadd = document.querySelector(".billingaddresscontainer");
+
+
+
+        const getlabel = document.getElementsByTagName('label');
+
+        for (var i = 0; i < getlabel.length; i++) {
+            console.log(getlabel[i]);
+
+            (function (index) {
+                getlabel[index].addEventListener('click', function (e) {
+                    console.log(e.target.value);
+
+                    const clickedElement = getlabel[index];
+                    const clickedSibling = clickedElement.nextElementSibling;
+
+                    for (var j = 0; j < getlabel.length; j++) {
+                        if (j === index) {
+                            clickedSibling.classList.remove('hidden');
+                        } else {
+                            const sibling = getlabel[j].nextElementSibling;
+                            if (sibling) {
+                                sibling.classList.add('hidden');
+                            }
+                        }
+                    }
+
+
+                    billingadd.classList.remove('hidden')
+                });
+            })(i);
+        }
+
+
+
+
+
+
+
+
+        var getpages = document.getElementsByClassName('page');
+        var ctntoship1 = document.getElementById('ctntoship1');
+
+
+        var objkeys = [
+            'email',
+            'firstname',
+            'lastname',
+            'phone',
+            'address',
+        ];
+        var datas = [];
+        let curidx = 0;
+
+
+
+        function showpage(num) {
+
+            getpages[num].classList.remove("hidden");
+
+        }
+
+        function gonow(num) {
+
+            if (num === 1 && !formvalid()) return false;
+
+            getpages[curidx].classList.add("hidden");
+            curidx = curidx + num;
+
+            showpage(curidx);
+        }
+
+        function* genfun() {
+            var index = 0;
+
+            while (index < objkeys.length) {
+                yield index++;
+            }
+        }
+
+        let gen = genfun();
+        console.log(gen.next().value)
+
+        function formvalid() {
+            var valid = true;
+
+            var getcurrinput = getpages[curidx].querySelectorAll("input");
+            console.log(getcurrinput);
+
+            for (var x = 0; x < getcurrinput.length; x++) {
+                // console.log(getcurrinput[x].value);
+                if (getcurrinput[x].value === '') {
+
+                    valid = false;
+                } else {
+                    const keys = objkeys[gen.next().value];
+                    const values = getcurrinput[x].value;
+                    datas.push({ [keys]: values });
+                }
+
+            }
+
+
+
+            return valid;
+
+        }
+
+        // proceed to check for sm and md 
+        const proceedtocheck = document.querySelector('.protockctn');
+        const ptcbtnmd = document.querySelector('.ptcbtnmd');
+        const backptc = document.getElementById('backptc');
+        ptcbtnmd.addEventListener('click', function () {
+            proceedtocheck.style.display = "block"
+        })
+
+        backptc.addEventListener('click', function () {
+            proceedtocheck.style.display = "none";
+        })
+
+        // end delivery method
+
+    </script>
+</body>
+
+</html>
