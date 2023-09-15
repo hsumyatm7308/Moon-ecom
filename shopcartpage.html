@@ -90,7 +90,7 @@
     <section class="w-full px-14 py-10 pb-48">
 
         <div class="flex justify-between px-12">
-            <h1 class="text-4xl font-semibold ml-4">Your Cart</h1>
+            <h1 class="text-4xl font-semibold ">Your Cart</h1>
 
             <button type="button"
                 class="flex justify-center items-center border border-slate-500 rounded-md p-2 hover:text-slate-500">
@@ -103,7 +103,7 @@
         </div>
 
 
-        <div class="w-full grid grid-cols-12 bg--300 mt-16 font-semibold text-gray-400">
+        <div class="w-full grid md:grid-cols-12  md:opacity-100  sm:opacity-0 mt-16 font-semibold text-gray-400">
             <div class="col-span-2">
 
             </div>
@@ -132,60 +132,88 @@
 
 
         <!-- items  -->
-        <div class="w-full grid grid-cols-12 bg--300 mt-8">
-            <div class="col-span-2 flex justify-center items-center">
-                <div class="w-[100px] border p-1 mr-">
-                    <img src="./assets/img/case2.png" alt="" width="">
-                </div>
-            </div>
-            <div class="col-span-3 flex justify-center flex-col items-start">
-                <p class="text-lg font-semibold">Case Fuck</p>
-                <span class="text-gray-500">Iphone 13 pro max</span>
-            </div>
-            <div class="col-span-2 flex justify-center flex-col items-start">
-                <p class="text-lg eachprice" data-price-id="1">54$</p>
-            </div>
-            <div class="col-span-2 flex justify-center items-center ">
-                <div class="w-32 h-8 flex rounded-md">
-                    <div id="decreasebtn"
-                        class="w-10 h-full rounded-tl-md rounded-bl-md border border-gray-500 flex justify-center items-center decrease-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-gray-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                        </svg>
+        <div class="w-full grid md:grid-cols-12 md:border-none sm:border  mt-8 ">
+            <div class="md:col-span-5 ">
+                <div class="grid md:grid-cols-5 sm:grid-cols-7">
 
+                    <div class="md:col-span-2 sm:col-span-2 bg-blue-00 flex justify-center items-center">
+                        <div class="w-[100px]  border p-1 mr-">
+                            <img src="./assets/img/case2.png" alt="" width="">
+                        </div>
                     </div>
-                    <div class="w-12 h-full border border-gray-300 flex justify-center items-center">
-                        <span class="quantity" data-item-id="1">1</span>
-                    </div>
-                    <div id="increasebtn"
-                        class="w-10 h-full rounded-tr-md rounded-br-md border border-gray-500 flex justify-center items-center increase-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-gray-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
 
+                    <div class="md:col-span-3 sm:col-span-5  bg-blue-00 flex justify-center flex-col items-start">
+                        <p class="text-lg font-semibold">Case Fuck</p>
+                        <span class="text-gray-500">Iphone 13 pro max</span>
                     </div>
                 </div>
             </div>
-            <div class="col-span-2 flex justify-center items-center">
-                <span class="text-lg totalprice" data-total-id="1">54$</span>
-            </div>
-            <div class="col-span-1 flex justify-center items-center">
-                <p class="remove-item" data-delete-id="1">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
 
-                </p>
+            <div class="md:col-span-7 ">
+
+                <div class="h-full grid md:grid-cols-7 sm:grid-cols-10  sm:p-3">
+
+
+                    <div class="md:hidden sm:col-span-1">
+
+                    </div>
+
+                    <div class="md:col-span-2 sm:col-span-2 flex justify-center flex-col items-start">
+                        <h1 class="md:hidden sm:block text-sm uppercase text-gray-500 mb-2">Price</h1>
+                        <p class="text-lg eachprice" data-price-id="1">54$</p>
+                    </div>
+
+                    <div class="md:col-span-2 sm:col-span-2 flex justify-center items-center flex-col ">
+                        <h1 class="md:hidden sm:block text-sm uppercase text-gray-500 mb-2">QTY</h1>
+                        <div class="flex justify-center items-center ">
+                            <div class="w-32 h-8 flex rounded-md">
+                                <div id="decreasebtn"
+                                    class="w-10 h-full rounded-tl-md rounded-bl-md border border-gray-500 flex justify-center items-center decrease-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+
+                                </div>
+                                <div class="w-12 h-full border border-gray-300 flex justify-center items-center">
+                                    <span class="quantity" data-item-id="1">1</span>
+                                </div>
+                                <div id="increasebtn"
+                                    class="w-10 h-full rounded-tr-md rounded-br-md border border-gray-500 flex justify-center items-center increase-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 sm:col-span-2 flex justify-center items-center flex-col">
+                        <h1 class="md:hidden sm:block text-sm uppercase text-gray-500 mb-2">Total</h1>
+                        <p class="md:text-lg sm:text-md totalprice" data-total-id="1">54$</p>
+                    </div>
+
+                    <div class="md:col-span-1 sm:col-span-1 flex justify-center items-center">
+                        <p class=" remove-item" data-delete-id="1">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+
+                        </p>
+
+                    </div>
+                </div>
             </div>
         </div>
 
 
 
         <!-- items  -->
-        <div class="w-full grid grid-cols-12 bg--300 mt-8">
+        <!-- <div class="w-full grid grid-cols-12 bg--300 mt-8">
             <div class="col-span-2 flex justify-center items-center">
                 <div class="w-[100px] border p-1 ">
                     <img src="./assets/img/case5.png" alt="" width="">
@@ -233,7 +261,7 @@
 
                 </p>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -243,76 +271,14 @@
 
 
 
-        <div class="w-full h-32 px-[52px] mt-16 ">
-            <div class=" bg-slate-300 ml-4 px-10 py-5 pt-12 rounded-md flex flex-col">
-                <!-- <div class="grid grid-cols-2">
-
-                    <div class="lg:justify-start lg:items-start flex md:justify-center md:flex-col md:items-center ">
-
-                        <h1 class="font-semibold text-2xl">Choose shipping mood:</h1>
-
-                        <div class="mt-7">
-                            <div class="flex justify-start items-center mb-3">
-                                <input type="radio" name="shippingMethod" id="pickup1" checked>
-                                <label class="radio flex justify-center items-center" for="pickup1">
-                                    <span>Store pickup <span
-                                            class="font-semibold text-lg uppercase ml-7">Free</span></span>
-                                </label>
-                            </div>
-
-                            <div class="flex justify-start items-center">
-                                <input type="radio" name="shippingMethod" id="pickup2">
-                                <label class="radio flex justify-center items-center" for="pickup2">
-                                    <span>Delivery at home <span class=" text-lg ml-7 uppercase">9.00$</span></span>
-                                </label>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                    <div class="flex justify-center subtotal-side  ">
-                        <table class="lg:mr-20">
-                            <tr class="">
-                                <td class="uppercase lg:px-40 text-start md:px-20">Subtotal</td>
-                                <td  class="">100$</td>
-                            </tr>
-                            <tr class="">
-                                <td class="uppercase lg:px-40 text-start md:px-20 ">shipping</td>
-                                <td  class="">Free</td>
-                            </tr>
-                            <tr>
-                                <td class="uppercase lg:px-40 text-start md:px-20 ">Total</td>
-                                <td class="">100$</td>
-                            </tr> 
+        <div class="w-full h-32 lg:px-[52px] md:px-[5px] mt-16  ">
+            <div class="w-full bg-slate-300  px-12 py-8  rounded-md flex flex-col">
 
 
 
-
-                        </table>
-
-
-                        
-
-
-
-
-
-                    </div>
-
-
-
-
-
-                </div> -->
-
-
-
-                <div class="grid grid-cols-12">
-                    <div class="col-span-7">
-                        <div
-                            class="lg:justify-start lg:items-start flex md:justify-center md:flex-col md:items-center ">
+                <div class="grid md:grid-cols-12 sm:grid-cols-1">
+                    <div class="md:col-span-7">
+                        <div class="md:justify-start md:items-start flex sm:justify-center sm:flex-col sm:items-start ">
 
                             <h1 class="font-semibold text-2xl">Choose shipping mood:</h1>
 
@@ -337,27 +303,34 @@
 
                         </div>
                     </div>
-                    <div class="col-span-5 bg--900">
-                        <div class="grid grid-cols-2">
-                            <div class="text-start uppercase">
-                                <p class="ml-14 mb-7">Subtotal</p>
-                                <p class="ml-14 mb-7">shipping</p>
-                                <p class="ml-14 mb-7">Total</p>
+                    <div class="md:col-span-5 md:block  sm:hidden flex justify-center items-center flex-col">
+                        <div class="w-full  grid grid-cols-2">
+                            <div class="text-center uppercase ">
+                                <p class=" mb-7">Subtotal</p>
+                                <p class=" mb-7">shipping</p>
+                                <p class=" mb-7">Total</p>
                             </div>
                             <div class="text-center ">
-                                <p class="mr-5 mb-7">100$</p>
-                                <p class="mr-5 mb-7">Free</p>
-                                <p class="mr-5 mb-7">100$</p>
+                                <p class=" mb-7">100$</p>
+                                <p class=" mb-7">Free</p>
+                                <p class=" mb-7">100$</p>
                             </div>
 
+
+
+
                         </div>
+
+                        <div class=" text-center  lg:mt-7">
+                            <button type="submit" name="checkout"
+                                class="lg:px-32 md:px-20 md:px-20 py-3 text-white rounded-md bg-red-500">Checkout</button>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div class="lg:self-end md:self-center bg-red-500 rounded-md lg:mr-[115px] lg:mt-7 md:mr-0">
-                    <button type="submit" name="checkout" class="lg:px-28 py-3 md:px-64 text-white">Checkout</button>
-                </div>
+
             </div>
 
 
