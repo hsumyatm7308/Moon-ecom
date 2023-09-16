@@ -80,7 +80,7 @@ function resizefix() {
 }
 
 //Start search case
-let names = ["Case Notebook", "Case Fuck", "Case Brownie", "Case Explorer wanted", "Case Pink with girl", "Case Blone with a glass", "Girl with a cake", "Case strength above all", "Case cakes and girl", "Case Red", "Case lovely gir", "Case Santa matrysohka", "Samsung S8", "Samsung S10", "Samsung Note20", "Huawai Nova9", "Huavwai Mate40", "Huawai Mate40 Pro", "Huawai P10", "Xiomi 11", "Xiomi 11Pro", "Xiomi 12"];
+let names = ["Case Notebook", "Case Fuck", "Case Brownie", "Case Explorer wanted", "Case Pink with girl", "Case Blone with a glass", "Girl with a cake", "Case strength above all", "Case cakes and girl", "Case Red", "Case lovely gir", "Case Santa matrysohka", "Ellen", "Camille", "Emily", "Nadia", "Mitchell", "Harvey", "Lucy", "Amy", "Glen", "Peter"];
 let sortnames = names.sort();
 console.log(sortnames);
 let getsearchinput = document.querySelector('#case-search');
@@ -202,22 +202,18 @@ const buybtn = document.getElementById('buybtn');
 
 
 // shop cart 
-const shopmodal = document.getElementById('shop-modal');
-const shopcartbtn = document.querySelector('.shopcartbtn');
+// const shopmodal = document.getElementById('shop-modal');
+// const shopcartbtn = document.querySelector('.shopcartbtn');
 
-const backtoshop = document.getElementById('backtoshop');
+// const backtoshop = document.getElementById('backtoshop');
 
+// shopcartbtn.addEventListener('click', function () {
+//     shopmodal.style.display = "block"
+// })
 
-
-
-
-shopcartbtn.addEventListener('click', function () {
-    shopmodal.style.display = "block"
-})
-
-backtoshop.addEventListener('click', function () {
-    shopmodal.style.display = "none"
-})
+// backtoshop.addEventListener('click', function () {
+//     shopmodal.style.display = "none"
+// })
 
 
 // cart modal 
@@ -243,11 +239,34 @@ if (document.readyState == 'loading') {
 
 
 function ready() {
+
     const itemremove = document.getElementsByClassName('item-remove')
     for (var i = 0; i < itemremove.length; i++) {
         var button = itemremove[i];
         button.addEventListener('click', removecartitems);
     }
+
+
+
+
+    closecartmodal.addEventListener('click', () => {
+        var cartitems = document.querySelectorAll('.shopcart-items');
+
+        // const itemremove = document.getElementsByClassName('item-remove')
+
+
+        // Get the HTMLCollection
+        var collection = document.getElementsByClassName('shopcartboxes');
+
+        // Remove each item from the HTMLCollection
+        while (collection.length > 0) {
+            collection[0].parentNode.removeChild(collection[0]);
+        }
+
+        closemodal();
+
+
+    });
 
 
 
@@ -272,7 +291,7 @@ function removecartitems(event) {
 
     cartItem.remove();
 
-    updatesubtotal();
+    updatetotal();
 
 
 
@@ -420,6 +439,7 @@ function addtocartfun() {
                 openmodal();
 
 
+
                 addcartdata(index, curnum);
 
 
@@ -500,7 +520,6 @@ let ichoose = true;
 
 
 function instockfun(index, curnum) {
-
 
 
 
@@ -643,34 +662,48 @@ function instockfun(index, curnum) {
 
 
 
-closecartmodal.addEventListener('click', () => {
-    var cartitems = document.querySelectorAll('.shopcart-items')[0];
-    var cartitemnames = cartitems.currentTarget;
-
-    // removefirst();
-    closemodal();
-});
 
 
 
 function backtoshopimg() {
     var cartitemcontainer = document.getElementById('shopcart-items');
-    var gobackshop = document.querySelector('.gobackshop');
-    var shoppingcartheader = document.querySelector('.shoppingcartheader')
+    var gobackshop = document.querySelector('.gbshop');
+    var shoppingcartheader = document.querySelector('.shoppingcartheader');
+    var proceedtocheck = document.querySelector('.protockctn');
+    var pctcheckbtn = document.querySelector('.ptcbtnmd')
+    var shopcarttitle = document.querySelector('.shopcarttitle');
     console.log(cartitemcontainer.children)
 
     if (cartitemcontainer.children.length === 0) {
         const backtoshopcontainer = document.querySelector(".backtoshopcontainer");
+
+
+
+
+
         backtoshopcontainer.classList.remove('hidden')
         gobackshop.classList.add('hidden')
         shoppingcartheader.classList.add('hidden')
+        proceedtocheck.classList.add("hidden");
+        shopcarttitle.classList.add('hidden');
+        pctcheckbtn.classList.add('hidden')
+
 
 
     } else if (cartitemcontainer.children.length > 0) {
         const backtoshopcontainer = document.querySelector(".backtoshopcontainer");
+
+
+
+
+
         backtoshopcontainer.classList.add('hidden')
+
         gobackshop.classList.remove('hidden')
         shoppingcartheader.classList.remove('hidden')
+        proceedtocheck.classList.remove('hidden');
+        shopcarttitle.classList.remove('hidden');
+        pctcheckbtn.classList.remove('hidden')
 
 
     }
@@ -678,191 +711,223 @@ function backtoshopimg() {
 
 
 
-function addproducttocart(itemtit, itemimg, itemprice, total, curnum, index, isname) {
+// function addproducttocart(itemtit, itemimg, itemprice, total, curnum, index, isname) {
 
 
-    cartshopbox = document.createElement('div');
 
-    cartshopbox.classList.add('shopcartboxes');
-    var cartitems = document.querySelectorAll('.shopcart-items')[0];
-    var cartitemname = cartitems.querySelectorAll('.cart-product-title');
 
-    // console.log(cartitemname)
 
-    for (var i = 0; i < cartitemname.length; i++) {
 
-        if (cartitemname[i].innerText === itemtit) {
+//     cartshopbox = document.createElement('div');
 
-            cartshopbox.remove();
+//     cartshopbox.classList.add('w-[99%', 'lg:bg-transparent', 'md:bg-transparent', 'mb-4', 'shopcartboxes');
+//     var cartitems = document.querySelectorAll('.shopcart-items')[0];
+//     var cartitemname = cartitems.querySelectorAll('.cart-product-title');
 
-            return;
+//     // console.log(cartitemname)
 
+//     for (var i = 0; i < cartitemname.length; i++) {
 
-        }
+//         if (cartitemname[i].innerText === itemtit) {
 
+//             // cartshopbox.remove();
 
 
-    }
+//             return;
 
 
-    var itemsbox = `  <div
-class="w-[90%] h-24 flex justify-start items-center mb-4 shopcartboxes">
-<div class="w-[30%] h-full bg-stone-100 flex justify-start items-center">
-    <img src="${itemimg}" class="ml-3" alt="case1" width="60px">
-    <div class="ml-3">
-        <h1><a href="" class="text-stone-500 lg:text-lg md:text-md cart-product-title">${itemtit}</a>
-        </h1>
-        <p class="text-gray-500 text-sm isvars">${isname}</p>
-    </div>
-</div>
+//         }
 
-<div class="w-[20%] h-full bg-stone-100 flex justify-center items-center itemsprice">
-    <span class="font-medium lg:text-lg md:text-md">${itemprice} $</span>
-</div>
 
-<div class="w-[20%] h-full bg-stone-100 flex justify-center items-center qtycontainer">
-    <div class="flex justify-center items-center rounded-md lg:w-32 h-8 md:w-20">
-        <div id="decreasebtn"
-            class="w-10 h-full rounded-tl-md rounded-bl-md border border-gray-500 flex justify-center items-center decbtn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                stroke-width="1.5" stroke="currentColor"
-                class="w-6 h-6 text-gray-600">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M19.5 12h-15" />
-            </svg>
 
-        </div>
-        <div
-            class=" flex justify-center items-center border border-gray-300 flex justify-center items-center lg:w-12 h-full md:w-10">
-            <span class="font-medium qty">${curnum}</span>
-        </div>
-        <div id="incbtn"
-            class="w-10 h-full rounded-tr-md rounded-br-md border border-gray-500 flex justify-center items-center incbtn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                stroke-width="1.5" stroke="currentColor"
-                class="w-6 h-6 text-gray-600">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
+//     }
 
-        </div>
-    </div>
-</div>
 
-<div class="w-[20%] h-full bg-stone-100 flex justify-center items-center">
-    <span class="font-medium lg:text-lg md:text-md totalqty">${curnum * itemprice} $</span>
-</div>
+//     var itemsbox = ` 
 
-<div  class="w-[20%] h-full flex justify-center items-center item-remove">
-    <button type="button"
-        class="text-gray-500 border border-slate-400 rounded-sm hover:bg-slate-300 py-1 px-3">Remove</button>
-</div>
-</div> `
+// <div class="grid lg:grid-cols-7  md:grid-cols-7 shopcartboxscr">
 
 
+// <div class="lg:col-span-2 md:col-span-2 h-full bg-stone-100 flex justify-start items-center shopcartboxscr-items">
+//     <img src="${itemimg}" class="ml-3" alt="case1" width="60px">
+//     <div class="ml-3">
+//         <h1><a href="" class="text-stone-500 lg:text-lg md:text-md cart-product-title">${itemtit}</a>
+//         </h1>
+//         <p class="text-gray-500 text-sm isvars">${isname}</p>
+//     </div>
+// </div>
 
+// <div class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center itemsprice shopcartboxscr-items">
+//     <span class="font-semibold ml-3 classheader">Price : </span>
+//     <span class="font-medium lg:text-lg md:text-md">${itemprice} $</span>
+// </div>
 
+// <div class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center qtycontainer shopcartboxscr-items">
+//     <span class="font-semibold ml-3 classheader">Qty : </span>
 
-    cartshopbox.innerHTML = itemsbox;
-    cartitems.appendChild(cartshopbox);
-    cartshopbox.getElementsByClassName('item-remove')[0].addEventListener('click', removecartitems);
-    cartshopbox.getElementsByClassName('incbtn')[0].addEventListener('click', function () {
-        cartqtychangeinc(event, total);
+//     <div class="flex justify-center items-center rounded-md lg:w-32 h-8 md:w-20">
+//         <div id="decreasebtn"
+//             class="w-10 h-full rounded-tl-md rounded-bl-md border border-gray-500 flex justify-center items-center decbtn">
+//             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+//                 stroke-width="1.5" stroke="currentColor"
+//                 class="w-6 h-6 text-gray-600">
+//                 <path stroke-linecap="round" stroke-linejoin="round"
+//                     d="M19.5 12h-15" />
+//             </svg>
 
+//         </div>
+//         <div
+//             class="border border-gray-300 flex justify-center items-center lg:w-12 h-full md:w-10">
+//             <span class="font-medium qty">${curnum}</span>
+//         </div>
+//         <div id="incbtn"
+//             class="w-10 h-full rounded-tr-md rounded-br-md border border-gray-500 flex justify-center items-center incbtn">
+//             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+//                 stroke-width="1.5" stroke="currentColor"
+//                 class="w-6 h-6 text-gray-600">
+//                 <path stroke-linecap="round" stroke-linejoin="round"
+//                     d="M12 4.5v15m7.5-7.5h-15" />
+//             </svg>
 
+//         </div>
+//     </div>
+// </div>
 
-    });
+// <div class="lg:col-span-1 md:col-span-1 h-full bg-stone-100 flex justify-center items-center shopcartboxscr-items">
+//     <span class="font-semibold ml-3 classheader">Total : </span>
+//     <span class="font-medium lg:text-lg md:text-md totalqty">${curnum * itemprice} $</span>
+// </div>
 
-    cartshopbox.getElementsByClassName('decbtn')[0].addEventListener('click', function () {
-        cartqtychangedec(event, total);
-    });
 
 
- 
 
-    updatetotal()
-    backtoshopimg();
 
+// <div  class="lg:col-span-1 md:col-span-1 h-full flex justify-center items-center item-remove shopcartboxscr-items">
+//     <button type="button"
+//         class="text-gray-500 border border-slate-400 rounded-sm hover:bg-slate-300 py-1 px-3">Remove</button>
+// </div>
+// </div>
 
 
+// `
 
 
 
-}
 
 
+//     cartshopbox.innerHTML = itemsbox;
+//     cartitems.appendChild(cartshopbox);
+//     cartshopbox.getElementsByClassName('item-remove')[0].addEventListener('click', removecartitems);
+//     cartshopbox.getElementsByClassName('incbtn')[0].addEventListener('click', function () {
+//         cartqtychangeinc(event, total);
 
 
 
+//     });
 
-function cartqtychangeinc(event, total) {
+//     cartshopbox.getElementsByClassName('decbtn')[0].addEventListener('click', function () {
+//         cartqtychangedec(event, total);
+//     });
 
 
 
 
-    var targetQtyElement = event.currentTarget.parentElement.querySelector('.qty');
-    console.log(targetQtyElement);
+//     updatetotal()
+//     backtoshopimg();
 
-    let currentQty = parseInt(targetQtyElement.textContent);
-    ++currentQty;
-    targetQtyElement.textContent = currentQty;
 
-    let tot = total * currentQty
 
-    updatetotal(tot);
 
-    var targetTotalElement = event.currentTarget.parentElement.parentElement.nextElementSibling.querySelector('.totalqty');
-    console.log(targetTotalElement);
 
-    var updatedTotal = (total * currentQty).toFixed(2, 0) + "$";
-    targetTotalElement.textContent = updatedTotal;
 
+// }
 
 
 
 
 
+// const cartshopbox = document.querySelectorAll('.qty');
 
-}
+// cartshopbox.getElementsByClassName('item-remove')[0].addEventListener('click', removecartitems);
+// cartshopbox.getElementsByClassName('incbtn')[0].addEventListener('click', function () {
+//     cartqtychangeinc(event, total);
 
 
 
-function cartqtychangedec(event, curnum) {
+// });
 
+// cartshopbox.getElementsByClassName('decbtn')[0].addEventListener('click', function () {
+//     cartqtychangedec(event, total);
+// });
 
 
 
 
 
+// function cartqtychangeinc(event, total) {
 
-    // Find the relevant quantity element based on the clicked "incbtn"
-    var targetQtyElement = event.currentTarget.parentElement.querySelector('.qty');
-    console.log(targetQtyElement);
 
-    // Update the quantity value
-    let currentQty = parseInt(targetQtyElement.textContent);
-    // currentQty--;
-    if (currentQty > 1) {
-        currentQty--;
-    } else {
-        currentQty = 1;
-    }
-    targetQtyElement.textContent = currentQty;
 
 
+//     var targetQtyElement = event.currentTarget.parentElement.querySelector('.qty');
+//     console.log(targetQtyElement);
 
+//     let currentQty = parseInt(targetQtyElement.textContent);
+//     ++currentQty;
+//     targetQtyElement.textContent = currentQty;
 
-    var targetTotalElement = event.currentTarget.parentElement.parentElement.nextElementSibling.querySelector('.totalqty');
-    console.log(targetTotalElement);
 
-    var updatedTotal = (total * currentQty).toFixed(2, 0) + "$";
-    targetTotalElement.textContent = updatedTotal;
 
 
-    updatetotal();
+//     var targetTotalElement = event.currentTarget.parentElement.parentElement.nextElementSibling.querySelector('.totalqty');
+//     console.log(targetTotalElement);
 
+//     var updatedTotal = (total * currentQty).toFixed(2, 0) + "$";
+//     targetTotalElement.textContent = updatedTotal;
 
-}
+
+
+//     updatetotal();
+
+//     backtoshopimg();
+
+
+// }
+
+
+
+// function cartqtychangedec(event, total) {
+
+
+
+//     var targetQtyElement = event.currentTarget.parentElement.querySelector('.qty');
+//     console.log(targetQtyElement);
+
+//     // Update the quantity value
+//     let currentQty = parseInt(targetQtyElement.textContent);
+//     // currentQty--;
+//     if (currentQty > 1) {
+//         currentQty--;
+//     } else {
+//         currentQty = 1;
+//     }
+//     targetQtyElement.textContent = currentQty;
+
+
+//     console.log(currentQty)
+
+
+//     var targetTotalElement = event.currentTarget.parentElement.parentElement.nextElementSibling.querySelector('.totalqty');
+//     console.log(targetTotalElement);
+
+//     var updatedTotal = (total * currentQty).toFixed(2, 0) + "$";
+//     targetTotalElement.textContent = updatedTotal;
+
+
+//     updatetotal();
+
+//     backtoshopimg();
+// }
 
 
 
@@ -875,8 +940,8 @@ function cartqtychangedec(event, curnum) {
 
 
 function updatetotal() {
-  
-    
+
+
     const shopcartitem = document.getElementsByClassName('shopcart-items')[0];
     const shopcartboxes = shopcartitem.getElementsByClassName('shopcartboxes');
     var untotal = 0;
@@ -885,186 +950,48 @@ function updatetotal() {
         var shopcartbox = shopcartboxes[i];
         var totalElement = shopcartbox.getElementsByClassName('totalqty')[0];
         var total = parseFloat(totalElement.innerText.replace("$", ""));
-        untotal = (untotal +  total);
+        untotal = (untotal + total);
 
-        var subtotal = untotal / 2;
-    }
-
-    console.log("Sum of all totals: " + subtotal.toFixed(2) + "$");
-    document.getElementsByClassName('subtotal')[0].innerText = subtotal.toFixed(2) + "$";
-
-  
-
-    console.log()
-}
-
-
-
-
-
-
-// update total 
-// function updatetotal(currentQty) {
-//     const shopcartitem = document.getElementsByClassName('shopcart-items')[0];
-//     const shopcartboxes = shopcartitem.getElementsByClassName('shopcartboxes');
-//     var total = 0;
-
-//     for (var i = 0; i < shopcartboxes.length; i++) {
-//         var shopcartbox = shopcartboxes[i];
-//         var priceelement = shopcartbox.getElementsByClassName('itemsprice')[0];
-//         var qtyelement = shopcartbox.getElementsByClassName('qty')[0];
-//         var price = parseFloat(priceelement.innerText.replace("$", ""))
-//         var qty = qtyelement.innerHTML;
-
-//         total = total + price * qty;
-//         total = Math.round(total * 100) / 100;
-
-//         document.getElementsByClassName('subtotal')[0].innerText = total + "$";
-
-//         console.log(shopcartbox)
-//     }
-// }
-
-
-
-
-
-
-var backshop = document.getElementById('continshop');
-backshop.addEventListener('click', function () {
-    shopmodal.style.display = "none"
-});
-
-
-
-
-
-
-// start delivery Method 
-
-const deliinput = document.getElementsByTagName('input');
-const delimthone = document.querySelector('.delimthone');
-const delimthtwo = document.querySelector('.delimthtwo');
-const delimththree = document.querySelector('.delimththree');
-const delimethod = document.querySelectorAll('.delimethod');
-
-
-
-
-const deliverybtn = document.querySelectorAll('.deliverybtn');
-
-
-const billingadd = document.querySelector(".billingaddresscontainer");
-
-
-
-const getlabel = document.getElementsByTagName('label');
-
-for (var i = 0; i < getlabel.length; i++) {
-    console.log(getlabel[i]);
-
-    (function (index) {
-        getlabel[index].addEventListener('click', function (e) {
-            console.log(e.target.value);
-
-            const clickedElement = getlabel[index];
-            const clickedSibling = clickedElement.nextElementSibling;
-
-            for (var j = 0; j < getlabel.length; j++) {
-                if (j === index) {
-                    clickedSibling.classList.remove('hidden');
-                } else {
-                    const sibling = getlabel[j].nextElementSibling;
-                    if (sibling) {
-                        sibling.classList.add('hidden');
-                    }
-                }
-            }
-
-
-            billingadd.classList.remove('hidden')
-        });
-    })(i);
-}
-
-
-
-
-
-
-
-
-var getpages = document.getElementsByClassName('page');
-var ctntoship1 = document.getElementById('ctntoship1');
-
-
-var objkeys = [
-    'email',
-    'firstname',
-    'lastname',
-    'phone',
-    'address',
-];
-var datas = [];
-let curidx = 0;
-
-
-
-function showpage(num) {
-
-    getpages[num].classList.remove("hidden");
-
-}
-
-function gonow(num) {
-
-    if (num === 1 && !formvalid()) return false;
-
-    getpages[curidx].classList.add("hidden");
-    curidx = curidx + num;
-
-    showpage(curidx);
-}
-
-function* genfun() {
-    var index = 0;
-
-    while (index < objkeys.length) {
-        yield index++;
-    }
-}
-
-let gen = genfun();
-console.log(gen.next().value)
-
-function formvalid() {
-    var valid = true;
-
-    var getcurrinput = getpages[curidx].querySelectorAll("input");
-    console.log(getcurrinput);
-
-    for (var x = 0; x < getcurrinput.length; x++) {
-        // console.log(getcurrinput[x].value);
-        if (getcurrinput[x].value === '') {
-
-            valid = false;
-        } else {
-            const keys = objkeys[gen.next().value];
-            const values = getcurrinput[x].value;
-            datas.push({ [keys]: values });
-        }
+        var subtotal = untotal;
+        document.getElementsByClassName('subtotal')[0].innerText = subtotal.toFixed(2) + "$";
 
     }
 
+    // console.log("Sum of all totals: " + subtotal.toFixed(2) + "$");
 
 
-    return valid;
+    // var cartitemcontainer = document.getElementById('shopcart-items');
+
+
+
 
 }
 
 
 
-// end delivery method
+
+
+
+
+
+
+
+
+
+const userprofilemodal = document.querySelector('.userprofile-modal');
+const accountsetting = document.querySelector('.accountsetting');
+accountsetting.addEventListener('click',function(){
+    userprofilemodal.style.display = "block";
+})
+
+
+const modaldialog = document.querySelectorAll('.modaldialog');
+modaldialog.forEach(arr => {
+    arr.addEventListener('click',function(){
+        this.parentElement.style.display="none";
+    })
+})
+
 
 // End Modal Area
 
